@@ -11,12 +11,12 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --primary: #1A3A6C;
-      --primary-dark: #0f2347;
-      --accent: #E86A1A;
-      --accent-dark: #c4561200;
+      --primary: #1B6B2A;
+      --primary-dark: #0F4019;
+      --accent: #F5B400;
+      --accent-dark: #d49b00;
       --white: #FFFFFF;
-      --bg: #F4F7FB;
+      --bg: #EBF5FF;
       --card: #FFFFFF;
       --text: #1A1A2E;
       --muted: #6B7280;
@@ -30,7 +30,13 @@
     body {
       font-family: 'Noto Sans JP', sans-serif;
       color: var(--text);
-      background: var(--bg);
+      background:
+        radial-gradient(ellipse 600px 180px at 15% 8%, rgba(255,255,255,0.7) 0%, transparent 60%),
+        radial-gradient(ellipse 400px 120px at 70% 18%, rgba(255,255,255,0.6) 0%, transparent 60%),
+        radial-gradient(ellipse 300px 90px at 88% 6%, rgba(255,255,255,0.5) 0%, transparent 60%),
+        radial-gradient(ellipse 250px 80px at 42% 28%, rgba(255,255,255,0.4) 0%, transparent 60%),
+        linear-gradient(to bottom, #87CEEA 0%, #A8D8F0 15%, #C0E5F8 35%, #D5EEF8 55%, #E5F5FC 75%, #EEF9FF 100%);
+      background-attachment: fixed;
       padding-top: var(--notice-h);
     }
 
@@ -53,7 +59,7 @@
     .site-header {
       position: relative;
       overflow: hidden;
-      min-height: calc(100vh - var(--notice-h));
+      min-height: calc(100svh - var(--notice-h));
       display: flex;
       align-items: flex-end;
       justify-content: center;
@@ -173,7 +179,7 @@
       outline: none;
     }
 
-    .hero-btn.u8 { border-color: rgba(232,106,26,0.75); }
+    .hero-btn.u8 { border-color: rgba(245,180,0,0.75); }
     .hero-btn.u8:hover { border-color: var(--accent); }
 
     .btn-category {

@@ -16,11 +16,11 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --primary: #1A3A6C;
-      --primary-dark: #0f2347;
-      --accent: #E86A1A;
+      --primary: #1B6B2A;
+      --primary-dark: #0F4019;
+      --accent: #F5B400;
       --white: #FFFFFF;
-      --bg: #F4F7FB;
+      --bg: #EBF5FF;
       --card: #FFFFFF;
       --text: #1A1A2E;
       --muted: #6B7280;
@@ -36,7 +36,13 @@
     body {
       font-family: 'Noto Sans JP', sans-serif;
       color: var(--text);
-      background: var(--bg);
+      background:
+        radial-gradient(ellipse 600px 180px at 15% 8%, rgba(255,255,255,0.7) 0%, transparent 60%),
+        radial-gradient(ellipse 400px 120px at 70% 18%, rgba(255,255,255,0.6) 0%, transparent 60%),
+        radial-gradient(ellipse 300px 90px at 88% 6%, rgba(255,255,255,0.5) 0%, transparent 60%),
+        radial-gradient(ellipse 250px 80px at 42% 28%, rgba(255,255,255,0.4) 0%, transparent 60%),
+        linear-gradient(to bottom, #87CEEA 0%, #A8D8F0 15%, #C0E5F8 35%, #D5EEF8 55%, #E5F5FC 75%, #EEF9FF 100%);
+      background-attachment: fixed;
       padding-top: calc(var(--notice-h) + var(--nav-h));
     }
 
@@ -145,7 +151,7 @@
     table thead th:first-child { padding-left: 10px; }
     table tbody td { padding: 10px 7px; text-align: center; border-bottom: 1px solid var(--border); color: var(--text); }
     table tbody tr:last-child td { border-bottom: none; }
-    table tbody tr:hover { background: #F0F5FF; }
+    table tbody tr:hover { background: #EFF8EF; }
 
     .schedule-table { min-width: 800px; }
     .schedule-table td.time {
@@ -156,7 +162,7 @@
     .schedule-table td.match-cell { padding: 8px 6px; vertical-align: top; min-width: 165px; }
     .match-label {
       display: block; font-size: 0.66rem; font-weight: 700; color: var(--primary);
-      margin-bottom: 3px; background: rgba(26,58,108,0.08);
+      margin-bottom: 3px; background: rgba(27,107,42,0.08);
       border-radius: 3px; padding: 1px 5px; white-space: nowrap;
     }
     .team-text { display: block; font-size: 0.78rem; font-weight: 700; text-align: center; line-height: 1.35; min-height: 1.2em; }
@@ -183,7 +189,7 @@
     .standings-table tbody td:nth-child(1) { text-align: center; }
     .standings-table tbody td:nth-child(2) { text-align: left; padding-left: 14px; font-weight: 700; }
     .standings-table tbody tr:last-child td { border-bottom: none; }
-    .standings-table tbody tr:hover { background: #F0F5FF; }
+    .standings-table tbody tr:hover { background: #EFF8EF; }
 
     .rank-badge {
       display: inline-block; width: 24px; height: 24px; border-radius: 50%;

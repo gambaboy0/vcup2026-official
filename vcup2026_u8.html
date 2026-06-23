@@ -11,11 +11,11 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --primary: #1A3A6C;
-      --primary-dark: #0f2347;
-      --accent: #E86A1A;
+      --primary: #1B6B2A;
+      --primary-dark: #0F4019;
+      --accent: #F5B400;
       --white: #FFFFFF;
-      --bg: #F4F7FB;
+      --bg: #EBF5FF;
       --card: #FFFFFF;
       --text: #1A1A2E;
       --muted: #6B7280;
@@ -34,7 +34,13 @@
     body {
       font-family: 'Noto Sans JP', sans-serif;
       color: var(--text);
-      background: var(--bg);
+      background:
+        radial-gradient(ellipse 600px 180px at 15% 8%, rgba(255,255,255,0.7) 0%, transparent 60%),
+        radial-gradient(ellipse 400px 120px at 70% 18%, rgba(255,255,255,0.6) 0%, transparent 60%),
+        radial-gradient(ellipse 300px 90px at 88% 6%, rgba(255,255,255,0.5) 0%, transparent 60%),
+        radial-gradient(ellipse 250px 80px at 42% 28%, rgba(255,255,255,0.4) 0%, transparent 60%),
+        linear-gradient(to bottom, #87CEEA 0%, #A8D8F0 15%, #C0E5F8 35%, #D5EEF8 55%, #E5F5FC 75%, #EEF9FF 100%);
+      background-attachment: fixed;
       padding-top: calc(var(--notice-h) + var(--nav-h));
     }
 
@@ -143,26 +149,26 @@
     table thead th:first-child { text-align: center; padding-left: 10px; }
     table tbody td { padding: 10px 7px; text-align: center; border-bottom: 1px solid var(--border); color: var(--text); }
     table tbody tr:last-child td { border-bottom: none; }
-    table tbody tr:hover { background: #F0F5FF; }
+    table tbody tr:hover { background: #EFF8EF; }
 
     .schedule-table { min-width: 800px; }
     .schedule-table td.time {
       white-space: nowrap; font-weight: 700; font-size: 0.92rem;
-      color: var(--primary); background: #EEF3FA; min-width: 56px; padding: 0 8px;
+      color: var(--primary); background: #EBF5EC; min-width: 56px; padding: 0 8px;
       text-align: center; vertical-align: middle;
     }
     .phase-row td {
-      background: #DDE6F5; color: var(--primary); font-weight: 700;
+      background: #D5EDD8; color: var(--primary); font-weight: 700;
       font-size: 0.78rem; padding: 7px 16px; letter-spacing: 0.04em;
     }
     .tournament-row td.time { background: #FFF3E0; color: var(--accent); }
     .schedule-table td.match-cell { padding: 8px 6px; vertical-align: top; min-width: 165px; }
     .match-label {
       display: block; font-size: 0.66rem; font-weight: 700; color: var(--primary);
-      margin-bottom: 3px; background: rgba(26,58,108,0.08);
+      margin-bottom: 3px; background: rgba(27,107,42,0.08);
       border-radius: 3px; padding: 1px 5px; white-space: nowrap;
     }
-    .tournament-row .match-label { color: var(--accent); background: rgba(232,106,26,0.1); }
+    .tournament-row .match-label { color: var(--accent); background: rgba(245,180,0,0.15); }
     .team-text { display: block; font-size: 0.78rem; font-weight: 700; text-align: center; line-height: 1.35; min-height: 1.2em; }
     .score-display { display: block; font-size: 0.8rem; font-weight: 700; text-align: center; margin: 3px 0; color: var(--muted); }
     .score-display.has-score { color: var(--score-green); font-size: 0.9rem; background: var(--score-bg); border-radius: 4px; padding: 1px 4px; }
@@ -177,7 +183,7 @@
       background: var(--primary); padding: 9px 16px; border-radius: 8px 8px 0 0;
     }
     .standings-table { min-width: 560px; }
-    .standings-table thead th { background: #EEF3FA; color: var(--primary); }
+    .standings-table thead th { background: #EBF5EC; color: var(--primary); }
     .standings-table thead th:first-child { text-align: center; padding-left: 8px; }
     .standings-table thead th:nth-child(2) { text-align: left; padding-left: 14px; }
     .standings-table tbody td:first-child { text-align: center; padding-left: 8px; }
