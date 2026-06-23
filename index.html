@@ -7,7 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" referrerpolicy="no-referrer">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -239,7 +239,7 @@
       gap: 12px;
     }
     @media (min-width: 600px) {
-      .overview-grid { grid-template-columns: repeat(4, 1fr); }
+      .overview-grid { grid-template-columns: repeat(2, 1fr); max-width: 600px; }
     }
 
     .overview-card {
@@ -253,8 +253,8 @@
     }
 
     .ov-icon { font-size: 1.5rem; line-height: 1; }
-    .ov-icon .material-icons-round { font-size: 2rem; color: var(--primary); display: block; }
-    .info-card-icon .material-icons-round { color: var(--white); font-size: 1.3rem; }
+    .ov-icon i { font-size: 1.6rem; color: var(--primary); }
+    .info-card-icon i { color: var(--white); font-size: 1.1rem; }
     .ov-label {
       font-size: 0.72rem;
       color: var(--muted);
@@ -489,24 +489,14 @@
       <h2 class="section-title">大会概要</h2>
       <div class="overview-grid">
         <div class="overview-card">
-          <div class="ov-icon"><span class="material-icons-round">calendar_today</span></div>
+          <div class="ov-icon"><i class="fa-solid fa-calendar-days"></i></div>
           <div class="ov-label">開催日</div>
           <div class="ov-value">2026年7月18日（土）</div>
         </div>
         <div class="overview-card">
-          <div class="ov-icon"><span class="material-icons-round">location_on</span></div>
+          <div class="ov-icon"><i class="fa-solid fa-location-dot"></i></div>
           <div class="ov-label">会場</div>
           <div class="ov-value">薬勝寺池南公園<br>サッカー場</div>
-        </div>
-        <div class="overview-card">
-          <div class="ov-icon"><span class="material-icons-round">payments</span></div>
-          <div class="ov-label">参加費</div>
-          <div class="ov-value">6,000円<br>／チーム・カテゴリー</div>
-        </div>
-        <div class="overview-card">
-          <div class="ov-icon"><span class="material-icons-round">emoji_events</span></div>
-          <div class="ov-label">主催</div>
-          <div class="ov-value">ヴァリエンテ<br>富山ジュニア</div>
         </div>
       </div>
     </div>
@@ -515,11 +505,11 @@
   <!-- Rules -->
   <section style="padding-top: 0;">
     <div class="container">
-      <h2 class="section-title">競技ルール</h2>
+      <h2 class="section-title">お知らせ</h2>
       <div class="info-grid">
         <div class="info-card">
           <div class="info-card-header">
-            <div class="info-card-icon"><span class="material-icons-round">sports_soccer</span></div>
+            <div class="info-card-icon"><i class="fa-solid fa-futbol"></i></div>
             <div class="info-card-title">U8 — 午前の部</div>
           </div>
           <ul class="info-list">
@@ -531,7 +521,7 @@
         </div>
         <div class="info-card">
           <div class="info-card-header">
-            <div class="info-card-icon"><span class="material-icons-round">sports_soccer</span></div>
+            <div class="info-card-icon"><i class="fa-solid fa-futbol"></i></div>
             <div class="info-card-title">U9 — 午後の部</div>
           </div>
           <ul class="info-list">
@@ -543,7 +533,7 @@
         </div>
         <div class="info-card">
           <div class="info-card-header">
-            <div class="info-card-icon"><span class="material-icons-round">rule</span></div>
+            <div class="info-card-icon"><i class="fa-solid fa-list-check"></i></div>
             <div class="info-card-title">共通ルール</div>
           </div>
           <ul class="info-list">
@@ -555,7 +545,7 @@
         </div>
         <div class="info-card">
           <div class="info-card-header">
-            <div class="info-card-icon"><span class="material-icons-round">water_drop</span></div>
+            <div class="info-card-icon"><i class="fa-solid fa-droplet"></i></div>
             <div class="info-card-title">水の販売</div>
           </div>
           <ul class="info-list">
