@@ -31,6 +31,7 @@
       --nav-h: 52px;
     }
 
+    /* notice banner 削除済み */
     body {
       font-family: 'Noto Sans JP', sans-serif;
       color: var(--text);
@@ -41,20 +42,12 @@
         radial-gradient(ellipse 250px 80px at 42% 28%, rgba(255,255,255,0.4) 0%, transparent 60%),
         linear-gradient(to bottom, #87CEEA 0%, #A8D8F0 15%, #C0E5F8 35%, #D5EEF8 55%, #E5F5FC 75%, #EEF9FF 100%);
       background-attachment: fixed;
-      padding-top: calc(var(--notice-h) + var(--nav-h));
-    }
-
-    /* ===== Notice Banner ===== */
-    .notice-banner {
-      position: fixed; top: 0; left: 0; width: 100%;
-      background: var(--live); color: var(--white);
-      text-align: center; font-size: 0.85rem; font-weight: 700;
-      padding: 10px 16px; z-index: 1000; line-height: 1.4;
+      padding-top: var(--nav-h);
     }
 
     /* ===== Navigation ===== */
     .site-nav {
-      position: fixed; top: var(--notice-h); left: 0; width: 100%;
+      position: fixed; top: 0; left: 0; width: 100%;
       background: var(--primary); z-index: 900;
       box-shadow: 0 2px 10px rgba(0,0,0,0.22);
     }
@@ -269,8 +262,6 @@
   </style>
 </head>
 <body>
-
-  <div class="notice-banner" role="alert">⚠️ 現在準備中です。情報は順次更新します。</div>
 
   <nav class="site-nav" aria-label="ページ内ナビゲーション">
     <div class="nav-inner">
@@ -804,8 +795,7 @@
           var t = document.querySelector(this.getAttribute('href'));
           if (t) {
             e.preventDefault();
-            var off = document.querySelector('.site-nav').offsetHeight +
-                      document.querySelector('.notice-banner').offsetHeight + 12;
+            var off = document.querySelector('.site-nav').offsetHeight + 12;
             window.scrollTo({ top: t.getBoundingClientRect().top + window.pageYOffset - off, behavior: 'smooth' });
           }
         });
