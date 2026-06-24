@@ -79,9 +79,9 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: clamp(8px, 2vw, 14px);
+      gap: clamp(6px, 1.8vw, 12px);
       flex: 1;
-      justify-content: flex-end;
+      justify-content: space-between;
       padding-bottom: 4px;
     }
 
@@ -95,22 +95,46 @@
       text-shadow: 0 1px 8px rgba(0,0,50,0.35);
     }
 
-    /* エンブレム */
+    /* スマホのみ：エンブレム上のV CUP */
+    .hero-above-emblem-m {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2px;
+      width: 100%;
+    }
+
+    /* エンブレム列 */
+    .hero-emblem-col {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
     .hero-emblem {
       width: clamp(100px, 28vw, 170px);
       filter: drop-shadow(0 4px 20px rgba(0,0,0,0.3));
     }
 
-    /* V CUP ＋ 日付 横並び */
-    .hero-title-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      width: 100%;
-      gap: 8px;
-      align-items: end;
+    /* スマホのみ：エンブレム下の日付 */
+    .hero-below-emblem-m {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2px;
+      margin-top: 6px;
     }
 
-    .hero-vcup { text-align: center; }
+    /* センターエリア（PC=3列、スマホ=縦） */
+    .hero-center-area {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* PCのみ：左右サイド（スマホでは非表示） */
+    .hero-left-side, .hero-right-side { display: none; }
+
+    /* 共通テキストスタイル */
     .hero-vcup-text {
       font-size: clamp(2.2rem, 7.5vw, 4.5rem);
       font-weight: 900;
@@ -119,16 +143,15 @@
       white-space: nowrap;
       text-shadow: 0 2px 14px rgba(0,0,80,0.3);
       letter-spacing: -0.02em;
+      text-align: center;
     }
     .hero-vcup-sub {
       font-size: clamp(0.58rem, 1.6vw, 0.72rem);
       color: rgba(255,255,255,0.9);
       font-style: italic;
-      margin-top: 4px;
+      margin-top: 2px;
       text-align: center;
     }
-
-    .hero-date { text-align: center; }
     .hero-date-text {
       font-size: clamp(2.2rem, 7.5vw, 4.5rem);
       font-weight: 900;
@@ -136,12 +159,35 @@
       line-height: 1;
       white-space: nowrap;
       text-shadow: 0 2px 12px rgba(0,0,80,0.25);
+      text-align: center;
     }
     .hero-date-sub {
       font-size: clamp(0.58rem, 1.6vw, 0.72rem);
       color: rgba(255,255,255,0.85);
-      margin-top: 4px;
+      margin-top: 2px;
       text-align: center;
+    }
+
+    /* ===== PC レイアウト（768px以上） ===== */
+    @media (min-width: 768px) {
+      .hero-above-emblem-m { display: none; }
+      .hero-below-emblem-m { display: none; }
+
+      .hero-center-area {
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: clamp(20px, 4vw, 48px);
+        width: 100%;
+      }
+
+      .hero-left-side, .hero-right-side {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 4px;
+        flex: 1;
+      }
     }
 
     /* カテゴリーボタン */
@@ -190,7 +236,7 @@
     }
     .hero-info-sub {
       font-size: clamp(0.65rem, 1.87vw, 0.75rem);
-      color: #1A1A2E;
+      color: var(--white);
       margin-bottom: 6px;
     }
 
@@ -478,22 +524,40 @@
   <header class="site-header">
     <div class="hero-content">
 
-      <!-- 上部テキスト -->
+      <!-- 常時：上部テキスト（PC=最上部、スマホ=最上部） -->
       <p class="hero-eyebrow">VALIENTE TOYAMA JUNIOR PRESENTS</p>
 
-      <!-- エンブレム -->
-      <img src="ヴァリエンテ富山エンブレム.webp" alt="ヴァリエンテ富山エンブレム" class="hero-emblem">
+      <!-- スマホのみ：エンブレム上のV CUP + サブ -->
+      <div class="hero-above-emblem-m">
+        <div class="hero-vcup-text">V CUP</div>
+        <div class="hero-vcup-sub">U8 U9 Football Festival</div>
+      </div>
 
-      <!-- V CUP ＋ 日付 -->
-      <div class="hero-title-row">
-        <div>
+      <!-- センターエリア：PC=3列（左V CUP・中エンブレム・右18July）、スマホ=縦 -->
+      <div class="hero-center-area">
+
+        <!-- PCのみ：左 V CUP -->
+        <div class="hero-left-side">
           <div class="hero-vcup-text">V CUP</div>
           <div class="hero-vcup-sub">U8 U9 Football Festival</div>
         </div>
-        <div class="hero-date">
-          <div class="hero-date-text">18 July</div>
+
+        <!-- エンブレム（常時） -->
+        <div class="hero-emblem-col">
+          <img src="ヴァリエンテ富山エンブレム.webp" alt="ヴァリエンテ富山エンブレム" class="hero-emblem">
+          <!-- スマホのみ：エンブレム下の日付 -->
+          <div class="hero-below-emblem-m">
+            <div class="hero-date-text">18 July 2026</div>
+            <div class="hero-date-sub">皆さん、ようこそ、熱い地へ</div>
+          </div>
+        </div>
+
+        <!-- PCのみ：右 18 July 2026 -->
+        <div class="hero-right-side">
+          <div class="hero-date-text">18 July 2026</div>
           <div class="hero-date-sub">皆さん、ようこそ、熱い地へ</div>
         </div>
+
       </div>
 
       <!-- カテゴリーボタン -->
