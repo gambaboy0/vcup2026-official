@@ -79,9 +79,10 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: clamp(10px, 2.5vw, 18px);
+      gap: clamp(8px, 2vw, 14px);
       flex: 1;
-      justify-content: space-between;
+      justify-content: flex-end;
+      padding-bottom: 4px;
     }
 
     /* 上部テキスト */
@@ -106,36 +107,41 @@
       grid-template-columns: 1fr 1fr;
       width: 100%;
       gap: 8px;
+      align-items: end;
     }
 
     .hero-vcup { text-align: center; }
     .hero-vcup-text {
-      font-size: clamp(3.9rem, 14vw, 6.3rem);
+      font-size: clamp(2.2rem, 7.5vw, 4.5rem);
       font-weight: 900;
       color: var(--white);
       line-height: 1;
+      white-space: nowrap;
       text-shadow: 0 2px 14px rgba(0,0,80,0.3);
       letter-spacing: -0.02em;
     }
     .hero-vcup-sub {
-      font-size: clamp(0.6rem, 1.8vw, 0.75rem);
+      font-size: clamp(0.58rem, 1.6vw, 0.72rem);
       color: rgba(255,255,255,0.9);
       font-style: italic;
-      margin-top: 3px;
+      margin-top: 4px;
+      text-align: center;
     }
 
     .hero-date { text-align: center; }
     .hero-date-text {
-      font-size: clamp(3.1rem, 11.2vw, 5.3rem);
-      font-weight: 700;
+      font-size: clamp(2.2rem, 7.5vw, 4.5rem);
+      font-weight: 900;
       color: var(--white);
       line-height: 1;
+      white-space: nowrap;
       text-shadow: 0 2px 12px rgba(0,0,80,0.25);
     }
     .hero-date-sub {
-      font-size: clamp(0.6rem, 1.8vw, 0.72rem);
+      font-size: clamp(0.58rem, 1.6vw, 0.72rem);
       color: rgba(255,255,255,0.85);
-      margin-top: 3px;
+      margin-top: 4px;
+      text-align: center;
     }
 
     /* カテゴリーボタン */
@@ -147,27 +153,27 @@
 
     .hero-cat-btn {
       flex: 1;
-      background: rgba(21,101,192,0.8);
+      background: rgba(245,180,0,0.85);
       border: 2px solid rgba(255,255,255,1);
       border-radius: 10px;
-      padding: 14px 10px 12px;
+      padding: 12px 10px 10px;
       text-decoration: none;
       text-align: center;
       backdrop-filter: blur(6px);
       transition: all 0.2s;
     }
-    .hero-cat-btn:hover { background: rgba(21,101,192,0.95); transform: translateY(-2px); }
+    .hero-cat-btn:hover { background: rgba(245,180,0,1); transform: translateY(-2px); }
 
     .hero-cat-title {
       font-size: clamp(1.8rem, 7vw, 2.6rem);
       font-weight: 900;
-      color: var(--white);
+      color: #1A1A2E;
       line-height: 1;
       letter-spacing: -0.02em;
     }
     .hero-cat-sub {
       font-size: clamp(0.68rem, 2vw, 0.78rem);
-      color: rgba(255,255,255,0.85);
+      color: rgba(26,26,46,0.85);
       margin-top: 4px;
     }
 
@@ -180,34 +186,38 @@
       color: var(--white);
       letter-spacing: 0.08em;
       text-shadow: 0 1px 8px rgba(0,0,50,0.3);
+      margin-bottom: 2px;
     }
     .hero-info-sub {
-      font-size: clamp(0.81rem, 2.34vw, 0.94rem);
-      color: rgba(255,255,255,0.85);
-      margin-bottom: 8px;
+      font-size: clamp(0.65rem, 1.87vw, 0.75rem);
+      color: #1A1A2E;
+      margin-bottom: 6px;
     }
 
     .hero-info-btns {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 8px;
+      gap: 6px;
+    }
+    @media (min-width: 768px) {
+      .hero-info-btns { grid-template-columns: repeat(4, 1fr); }
     }
 
     .hero-info-btn {
-      background: rgba(21,101,192,0.8);
+      background: rgba(27,107,42,0.82);
       border: 2px solid rgba(255,255,255,1);
       border-radius: 8px;
-      padding: 13px 8px;
+      padding: 7px 6px;
       color: var(--white);
       text-decoration: none;
-      font-size: clamp(0.91rem, 2.86vw, 1.07rem);
+      font-size: clamp(0.82rem, 2.6vw, 0.96rem);
       font-weight: 700;
-      line-height: 1.5;
+      line-height: 1.4;
       text-align: center;
       backdrop-filter: blur(4px);
       transition: all 0.2s;
     }
-    .hero-info-btn:hover { background: rgba(21,101,192,0.95); }
+    .hero-info-btn:hover { background: rgba(27,107,42,0.98); }
 
     /* ===== Container ===== */
     .container {
