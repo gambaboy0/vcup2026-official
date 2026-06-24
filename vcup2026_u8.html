@@ -184,15 +184,17 @@
       font-size: 0.95rem; font-weight: 700; color: var(--white);
       background: var(--primary); padding: 9px 16px; border-radius: 8px 8px 0 0;
     }
-    .standings-table { min-width: 620px; table-layout: fixed; width: 100%; }
-    .standings-table th, .standings-table td { text-align: center; }
+    .standings-table { min-width: 620px; font-size: 0.82rem; table-layout: fixed; width: 100%; }
+    .standings-table th, .standings-table td { text-align: center; padding: 9px 6px; vertical-align: middle; }
     .standings-table th:nth-child(1), .standings-table td:nth-child(1) { width: 52px; }
     .standings-table th:nth-child(2), .standings-table td:nth-child(2) { text-align: left; padding-left: 10px; font-weight: 700; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
     .standings-table th:nth-child(3), .standings-table td:nth-child(3) { width: 52px; }
     .standings-table th:nth-child(4), .standings-table td:nth-child(4) { width: 52px; }
-    .standings-table th:nth-child(n+5) { width: 44px; }
-    .standings-table td:nth-child(n+5) { width: 44px; }
-    .standings-table thead th { background: #EBF5EC; color: var(--primary); }
+    .standings-table th:nth-child(n+5), .standings-table td:nth-child(n+5) { width: 44px; }
+    .standings-table thead th { background: #EBF5EC; color: var(--primary); font-size: 0.74rem; }
+    .standings-table tbody td { border-bottom: 1px solid var(--border); }
+    .standings-table tbody tr:last-child td { border-bottom: none; }
+    .standings-table tbody tr:hover { background: #EFF8EF; }
 
     .rank-badge {
       display: inline-block; width: 24px; height: 24px; border-radius: 50%;
@@ -412,7 +414,7 @@
           <table class="standings-table">
             <thead><tr><th>順位</th><th>チーム名</th><th>勝点</th><th>得失差</th><th>試合</th><th>勝</th><th>分</th><th>負</th><th>得点</th><th>失点</th></tr></thead>
             <tbody id="tbody-A">
-              <tr><td>—</td><td>富山中央SC</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+              <tr><td>—</td><td>富山中央FC</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
               <tr><td>—</td><td>BEZERRO</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
               <tr><td>—</td><td>みなみFC</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
               <tr><td>—</td><td>FC滑川</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
@@ -428,7 +430,7 @@
             <thead><tr><th>順位</th><th>チーム名</th><th>勝点</th><th>得失差</th><th>試合</th><th>勝</th><th>分</th><th>負</th><th>得点</th><th>失点</th></tr></thead>
             <tbody id="tbody-B">
               <tr><td>—</td><td>ヴァリエンテ富山</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
-              <tr><td>—</td><td>大久保少年サッカー</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+              <tr><td>—</td><td>大久保少年サッカークラブ</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
               <tr><td>—</td><td>石動大谷</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
               <tr><td>—</td><td>EST小杉</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
             </tbody>
@@ -504,7 +506,7 @@
         <div class="group-card">
           <div class="group-card-header">GROUP A</div>
           <ul>
-            <li><span class="team-num">1</span>富山中央SC</li>
+            <li><span class="team-num">1</span>富山中央FC</li>
             <li><span class="team-num">2</span>BEZERRO</li>
             <li><span class="team-num">3</span>みなみFC</li>
             <li><span class="team-num">4</span>FC滑川</li>
@@ -514,7 +516,7 @@
           <div class="group-card-header">GROUP B</div>
           <ul>
             <li><span class="team-num">1</span>ヴァリエンテ富山</li>
-            <li><span class="team-num">2</span>大久保少年サッカー</li>
+            <li><span class="team-num">2</span>大久保少年サッカークラブ</li>
             <li><span class="team-num">3</span>石動大谷</li>
             <li><span class="team-num">4</span>EST小杉</li>
           </ul>
