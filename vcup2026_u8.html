@@ -205,27 +205,56 @@
     .rank-3 { background: #FED7AA; color: #7C2D12; }
     .rank-other { background: var(--border); color: var(--muted); }
 
-    /* ===== Tournament ===== */
+    /* ===== Tournament Bracket ===== */
     .tourn-pending {
       border: 2px dashed var(--border); border-radius: 10px;
       padding: 40px 20px; text-align: center; color: var(--muted);
       font-size: 0.94rem; background: var(--card);
     }
-    .tourn-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-    @media (min-width: 768px) { .tourn-grid { grid-template-columns: repeat(4, 1fr); } }
-    .tourn-group { background: var(--card); border-radius: 12px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.07); }
-    .tourn-group-header { padding: 10px 14px; font-weight: 700; font-size: 0.86rem; color: var(--white); }
+    /* 大外グリッド: スマホ=1列、PC=4列 */
+    .bracket-grid { display: grid; grid-template-columns: 1fr; gap: 14px; }
+    @media (min-width: 900px) { .bracket-grid { grid-template-columns: repeat(2, 1fr); } }
+
+    /* カード */
+    .bc { background: var(--card); border-radius: 12px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.07); }
+    .bc-head { padding: 9px 14px; font-weight: 700; font-size: 0.86rem; color: var(--white); }
     .tg-rank1 { background: #CA8A04; }
     .tg-rank2 { background: var(--silver); }
     .tg-rank3 { background: #92400E; }
     .tg-rank4 { background: var(--primary); }
-    .tourn-match { padding: 10px 14px; border-bottom: 1px solid var(--border); }
-    .tourn-match:last-child { border-bottom: none; }
-    .tourn-match-label { font-size: 0.7rem; font-weight: 700; color: var(--muted); margin-bottom: 4px; }
-    .tourn-match-time { font-size: 0.68rem; color: var(--primary); font-weight: 700; float: right; }
-    .tourn-teams { font-size: 0.82rem; font-weight: 700; line-height: 1.7; }
-    .tourn-score { font-size: 0.86rem; font-weight: 700; color: var(--score-green); margin-top: 3px; }
-    .tourn-vs { color: var(--muted); font-weight: 400; font-size: 0.74rem; }
+
+    /* ブラケット本体 */
+    .bc-bracket { display: flex; align-items: stretch; padding: 10px 8px; gap: 0; }
+
+    /* 左：準決勝 */
+    .bc-semis { display: flex; flex-direction: column; gap: 6px; flex: 1; min-width: 0; }
+    .bc-sf-wrap { flex: 1; display: flex; }
+
+    /* 接続ライン */
+    .bc-conn { width: 18px; display: flex; flex-direction: column; flex-shrink: 0; }
+    .bc-conn-top { flex: 1; border-right: 2px solid var(--border); border-bottom: 2px solid var(--border); border-radius: 0 0 5px 0; }
+    .bc-conn-bot { flex: 1; border-right: 2px solid var(--border); border-top: 2px solid var(--border); border-radius: 0 5px 0 0; }
+
+    /* 右：決定戦 */
+    .bc-right { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 6px; justify-content: center; }
+    .bc-final-wrap { flex: 1; display: flex; align-items: center; }
+    .bc-third-wrap { flex: 1; display: flex; align-items: center; }
+
+    /* 個別マッチカード */
+    .bc-match { flex: 1; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; background: white; }
+    .bc-match.is-final { border-color: #CA8A04; border-width: 2px; }
+    .bc-match.is-third { border-style: dashed; }
+
+    .bc-match-title { font-size: 0.64rem; font-weight: 700; color: var(--primary); padding: 3px 7px; background: rgba(27,107,42,0.06); display: flex; justify-content: space-between; border-bottom: 1px solid var(--border); }
+    .bc-match-title.gold { color: #92400E; background: rgba(202,138,4,0.08); }
+    .bc-match-title span { color: var(--muted); font-weight: 400; }
+
+    .bc-team { display: flex; justify-content: space-between; align-items: center; padding: 5px 7px; font-size: 0.74rem; font-weight: 700; border-top: 1px solid var(--border); }
+    .bc-team:first-of-type { border-top: none; }
+    .bc-team.bc-win { color: var(--score-green); background: rgba(22,101,52,0.05); }
+
+    .bc-name { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-width: 0; }
+    .bc-score { font-size: 0.8rem; font-weight: 700; color: var(--score-green); margin-left: 5px; flex-shrink: 0; }
 
     /* ===== Final Standings ===== */
     .final-standings-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; }
@@ -667,15 +696,23 @@
        4=1位T準決勝1 5=1位T準決勝2 6=2位T準決勝1 7=2位T準決勝2
        8=9位決定  9=11位決定  10=13位決定  11=15位決定
        12=1位決定 13=3位決定  14=5位決定   15=7位決定 */
-    var TOURN_DEFS = [
-      { rank: 1, label: '1位トーナメント', cls: 'tg-rank1',
-        matches: [{idx:4,label:'準決勝1',time:'10:55'},{idx:5,label:'準決勝2',time:'10:55'},{idx:12,label:'1位決定戦',time:'11:45'},{idx:13,label:'3位決定戦',time:'11:45'}]},
-      { rank: 2, label: '2位トーナメント', cls: 'tg-rank2',
-        matches: [{idx:6,label:'準決勝1',time:'10:55'},{idx:7,label:'準決勝2',time:'10:55'},{idx:14,label:'5位決定戦',time:'11:45'},{idx:15,label:'7位決定戦',time:'11:45'}]},
-      { rank: 3, label: '3位トーナメント', cls: 'tg-rank3',
-        matches: [{idx:0,label:'準決勝1',time:'10:30'},{idx:1,label:'準決勝2',time:'10:30'},{idx:8,label:'9位決定戦',time:'11:20'},{idx:9,label:'11位決定戦',time:'11:20'}]},
-      { rank: 4, label: '4位トーナメント', cls: 'tg-rank4',
-        matches: [{idx:2,label:'準決勝1',time:'10:30'},{idx:3,label:'準決勝2',time:'10:30'},{idx:10,label:'13位決定戦',time:'11:20'},{idx:11,label:'15位決定戦',time:'11:20'}]}
+    var BRACKETS_U8 = [
+      { label:'1位トーナメント', cls:'tg-rank1',
+        sf1:{idx:4,time:'10:55'}, sf2:{idx:5,time:'10:55'},
+        fin:{idx:12,label:'1位決定戦',time:'11:45'},
+        trd:{idx:13,label:'3位決定戦',time:'11:45'} },
+      { label:'2位トーナメント', cls:'tg-rank2',
+        sf1:{idx:6,time:'10:55'}, sf2:{idx:7,time:'10:55'},
+        fin:{idx:14,label:'5位決定戦',time:'11:45'},
+        trd:{idx:15,label:'7位決定戦',time:'11:45'} },
+      { label:'3位トーナメント', cls:'tg-rank3',
+        sf1:{idx:0,time:'10:30'}, sf2:{idx:1,time:'10:30'},
+        fin:{idx:8,label:'9位決定戦',time:'11:20'},
+        trd:{idx:9,label:'11位決定戦',time:'11:20'} },
+      { label:'4位トーナメント', cls:'tg-rank4',
+        sf1:{idx:2,time:'10:30'}, sf2:{idx:3,time:'10:30'},
+        fin:{idx:10,label:'13位決定戦',time:'11:20'},
+        trd:{idx:11,label:'15位決定戦',time:'11:20'} },
     ];
 
     function isGroupStageDone(glRows) {
@@ -686,6 +723,30 @@
       return true;
     }
 
+    function bcMatchCard(r, label, time, extraCls) {
+      var hn  = r ? (r[4]||'—') : '—';
+      var an  = r ? (r[9]||'—') : '—';
+      var hs  = r ? r[5] : '';
+      var as_ = r ? r[8] : '';
+      var hpk = r ? r[6] : '';
+      var apk = r ? r[7] : '';
+      var hasScore = hs !== '' && as_ !== '';
+      var hNum = hasScore ? Number(hs) : 0;
+      var aNum = hasScore ? Number(as_) : 0;
+      var hpkNum = hpk !== '' ? Number(hpk) : -1;
+      var apkNum = apk !== '' ? Number(apk) : -1;
+      var hWin = hasScore && (hNum > aNum || (hNum === aNum && hpkNum > apkNum));
+      var aWin = hasScore && !hWin;
+      var hScoreTxt = hasScore ? hs + (hpk !== '' ? '('+hpk+')' : '') : '';
+      var aScoreTxt = hasScore ? as_ + (apk !== '' ? '('+apk+')' : '') : '';
+      var isFinal = extraCls === 'is-final';
+      return '<div class="bc-match ' + (extraCls||'') + '">' +
+        '<div class="bc-match-title' + (isFinal?' gold':'') + '">' + label + '<span>' + time + '</span></div>' +
+        '<div class="bc-team' + (hWin?' bc-win':'') + '"><span class="bc-name">' + hn + '</span>' + (hScoreTxt ? '<span class="bc-score">'+hScoreTxt+'</span>' : '') + '</div>' +
+        '<div class="bc-team' + (aWin?' bc-win':'') + '"><span class="bc-name">' + an + '</span>' + (aScoreTxt ? '<span class="bc-score">'+aScoreTxt+'</span>' : '') + '</div>' +
+        '</div>';
+    }
+
     function renderTournament(tournRows, glRows) {
       var container = document.getElementById('tournament-content');
       if (!container) return;
@@ -693,30 +754,36 @@
         container.innerHTML = '<div class="tourn-pending"><p style="font-size:1.6rem;margin-bottom:10px;">⏳</p>グループリーグ終了後に表示されます</div>';
         return;
       }
-      var html = '<div class="tourn-grid">';
-      TOURN_DEFS.forEach(function(group) {
-        html += '<div class="tourn-group"><div class="tourn-group-header ' + group.cls + '">' + group.label + '</div>';
-        group.matches.forEach(function(m) {
-          var r   = tournRows && tournRows[m.idx];
-          var hn  = r ? (r[4]||'—') : '—';
-          var an  = r ? (r[9]||'—') : '—';
-          var hs  = r ? r[5] : '';
-          var as_ = r ? r[8] : '';
-          var hpk = r ? r[6] : '';
-          var apk = r ? r[7] : '';
-          html += '<div class="tourn-match"><div class="tourn-match-label">' + m.label +
-                  '<span class="tourn-match-time">' + m.time + '</span></div>';
-          html += '<div class="tourn-teams">' + hn + ' <span class="tourn-vs">vs</span> ' + an + '</div>';
-          if (hs !== '' && as_ !== '') {
-            var sc = hs + ' - ' + as_;
-            if (hpk !== '' && apk !== '') sc += '（PK ' + hpk + '-' + apk + '）';
-            html += '<div class="tourn-score">' + sc + '</div>';
-          }
-          html += '</div>';
-        });
+
+      var html = '<div class="bracket-grid">';
+      BRACKETS_U8.forEach(function(b) {
+        var rSF1 = tournRows && tournRows[b.sf1.idx];
+        var rSF2 = tournRows && tournRows[b.sf2.idx];
+        var rFin = tournRows && tournRows[b.fin.idx];
+        var rTrd = tournRows && tournRows[b.trd.idx];
+
+        html += '<div class="bc"><div class="bc-head ' + b.cls + '">' + b.label + '</div>';
+        html += '<div class="bc-bracket">';
+
+        /* 左：準決勝 */
+        html += '<div class="bc-semis">';
+        html += '<div class="bc-sf-wrap">' + bcMatchCard(rSF1, '準決勝1', b.sf1.time, '') + '</div>';
+        html += '<div class="bc-sf-wrap">' + bcMatchCard(rSF2, '準決勝2', b.sf2.time, '') + '</div>';
         html += '</div>';
+
+        /* コネクタ */
+        html += '<div class="bc-conn"><div class="bc-conn-top"></div><div class="bc-conn-bot"></div></div>';
+
+        /* 右：決定戦 */
+        html += '<div class="bc-right">';
+        html += '<div class="bc-final-wrap">' + bcMatchCard(rFin, b.fin.label, b.fin.time, 'is-final') + '</div>';
+        html += '<div class="bc-third-wrap">' + bcMatchCard(rTrd, b.trd.label, b.trd.time, 'is-third') + '</div>';
+        html += '</div>';
+
+        html += '</div></div>'; /* bc-bracket / bc */
       });
       html += '</div>';
+
       container.innerHTML = html;
       var el = document.getElementById('tourn-updated');
       if (el) el.textContent = '最終更新: ' + ts();
