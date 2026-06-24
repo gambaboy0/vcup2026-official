@@ -596,7 +596,7 @@
     ];
 
     function isGroupStageDone(glRows) {
-      for (var i = 0; i < 24; i++) { var r = glRows[i]; if (!r || r[5] === '' || r[8] === '') return false; }
+      for (var i = 0; i < 24; i++) { var r = glRows[i]; if (!r || !r[5] || !r[8]) return false; }
       return true;
     }
 
