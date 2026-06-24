@@ -171,12 +171,15 @@
       font-size: 0.95rem; font-weight: 700; color: var(--white);
       background: var(--primary); padding: 9px 16px; border-radius: 8px 8px 0 0;
     }
-    .standings-table { min-width: 560px; }
-    .standings-table thead th { background: #EBF5EC; color: var(--primary); padding: 10px 7px; text-align: center; font-size: 0.76rem; }
-    .standings-table thead th:nth-child(2) { text-align: left; padding-left: 14px; }
-    .standings-table tbody td { padding: 10px 7px; text-align: center; border-bottom: 1px solid var(--border); }
+    .standings-table { min-width: 560px; font-size: 0.82rem; }
+    .standings-table thead th { background: #EBF5EC; color: var(--primary); padding: 9px 6px; text-align: center; font-size: 0.74rem; }
+    .standings-table thead th:nth-child(2) { text-align: left; padding-left: 10px; }
+    .standings-table tbody td { padding: 9px 6px; text-align: center; border-bottom: 1px solid var(--border); vertical-align: middle; }
     .standings-table tbody td:first-child { text-align: center; }
-    .standings-table tbody td:nth-child(2) { text-align: left; padding-left: 14px; font-weight: 700; }
+    .standings-table tbody td:nth-child(2) {
+      text-align: left; padding-left: 10px; font-weight: 700;
+      max-width: 160px; word-break: keep-all; overflow-wrap: break-word; line-height: 1.3;
+    }
     .standings-table tbody tr:last-child td { border-bottom: none; }
     .standings-table tbody tr:hover { background: #EFF8EF; }
     .rank-badge {
