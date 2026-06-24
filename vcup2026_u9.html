@@ -650,7 +650,8 @@
         var rank = r[0]||'—', team = r[1]||'—';
         var rn = parseInt(rank,10);
         var rc = rn===1?'rank-1':rn===2?'rank-2':rn===3?'rank-3':'rank-other';
-        html += '<div class="final-item"><span class="rank-badge ' + rc + '">' + rank + '</span><span class="team-name">' + team + '</span></div>';
+        var rankDisplay = isNaN(rn) ? rank : rn;
+        html += '<div class="final-item"><span class="rank-badge ' + rc + '">' + rankDisplay + '</span><span class="team-name">' + team + '</span></div>';
       });
       html += '</div>';
       container.innerHTML = html;
