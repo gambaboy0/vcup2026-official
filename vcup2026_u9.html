@@ -171,15 +171,15 @@
       font-size: 0.95rem; font-weight: 700; color: var(--white);
       background: var(--primary); padding: 9px 16px; border-radius: 8px 8px 0 0;
     }
-    .standings-table { min-width: 560px; font-size: 0.82rem; }
-    .standings-table thead th { background: #EBF5EC; color: var(--primary); padding: 9px 6px; text-align: center; font-size: 0.74rem; }
-    .standings-table thead th:nth-child(2) { text-align: left; padding-left: 10px; }
-    .standings-table tbody td { padding: 9px 6px; text-align: center; border-bottom: 1px solid var(--border); vertical-align: middle; }
-    .standings-table tbody td:first-child { text-align: center; }
-    .standings-table tbody td:nth-child(2) {
-      text-align: left; padding-left: 10px; font-weight: 700;
-      max-width: 160px; word-break: keep-all; overflow-wrap: break-word; line-height: 1.3;
-    }
+    .standings-table { min-width: 620px; font-size: 0.82rem; table-layout: fixed; width: 100%; }
+    .standings-table th, .standings-table td { text-align: center; padding: 9px 6px; vertical-align: middle; }
+    .standings-table th:nth-child(1), .standings-table td:nth-child(1) { width: 52px; }
+    .standings-table th:nth-child(2), .standings-table td:nth-child(2) { text-align: left; padding-left: 10px; font-weight: 700; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .standings-table th:nth-child(3), .standings-table td:nth-child(3) { width: 52px; }
+    .standings-table th:nth-child(4), .standings-table td:nth-child(4) { width: 52px; }
+    .standings-table th:nth-child(n+5), .standings-table td:nth-child(n+5) { width: 44px; }
+    .standings-table thead th { background: #EBF5EC; color: var(--primary); font-size: 0.74rem; }
+    .standings-table tbody td { border-bottom: 1px solid var(--border); }
     .standings-table tbody tr:last-child td { border-bottom: none; }
     .standings-table tbody tr:hover { background: #EFF8EF; }
     .rank-badge {

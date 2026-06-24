@@ -184,12 +184,15 @@
       font-size: 0.95rem; font-weight: 700; color: var(--white);
       background: var(--primary); padding: 9px 16px; border-radius: 8px 8px 0 0;
     }
-    .standings-table { min-width: 560px; }
+    .standings-table { min-width: 620px; table-layout: fixed; width: 100%; }
+    .standings-table th, .standings-table td { text-align: center; }
+    .standings-table th:nth-child(1), .standings-table td:nth-child(1) { width: 52px; }
+    .standings-table th:nth-child(2), .standings-table td:nth-child(2) { text-align: left; padding-left: 10px; font-weight: 700; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .standings-table th:nth-child(3), .standings-table td:nth-child(3) { width: 52px; }
+    .standings-table th:nth-child(4), .standings-table td:nth-child(4) { width: 52px; }
+    .standings-table th:nth-child(n+5) { width: 44px; }
+    .standings-table td:nth-child(n+5) { width: 44px; }
     .standings-table thead th { background: #EBF5EC; color: var(--primary); }
-    .standings-table thead th:first-child { text-align: center; padding-left: 8px; }
-    .standings-table thead th:nth-child(2) { text-align: left; padding-left: 14px; }
-    .standings-table tbody td:first-child { text-align: center; padding-left: 8px; }
-    .standings-table tbody td:nth-child(2) { text-align: left; padding-left: 14px; font-weight: 700; }
 
     .rank-badge {
       display: inline-block; width: 24px; height: 24px; border-radius: 50%;
