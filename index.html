@@ -103,6 +103,12 @@
       gap: 2px;
       width: 100%;
     }
+    /* スマホのV CUPは画面幅いっぱい */
+    .hero-above-emblem-m .hero-vcup-text {
+      font-size: clamp(4.5rem, 28vw, 9rem);
+      width: 100%;
+      text-align: center;
+    }
 
     /* エンブレム列 */
     .hero-emblem-col {
@@ -177,7 +183,7 @@
         flex-direction: row;
         justify-content: center;
         align-items: center;
-        gap: clamp(20px, 4vw, 48px);
+        gap: clamp(24px, 4vw, 56px);
         width: 100%;
       }
 
@@ -187,6 +193,13 @@
         align-items: center;
         gap: 4px;
         flex: 1;
+      }
+
+      /* PCのサブテキストを1.2倍・少し下に */
+      .hero-left-side .hero-vcup-sub,
+      .hero-right-side .hero-date-sub {
+        font-size: clamp(0.7rem, 1.92vw, 0.86rem);
+        margin-top: 10px;
       }
     }
 
