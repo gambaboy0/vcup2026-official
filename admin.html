@@ -709,7 +709,9 @@
       matches.forEach(function(m, i) {
         var opt = document.createElement('option');
         opt.value       = i;
-        opt.textContent = m.label + (m.time ? '（' + m.time + '）' : '');
+        var vs = (m.homeName && m.homeName !== '—' && m.awayName && m.awayName !== '—')
+                 ? '　' + m.homeName + ' vs ' + m.awayName : '';
+        opt.textContent = m.label + (m.time ? '（' + m.time + '）' : '') + vs;
         sel.appendChild(opt);
       });
       document.getElementById('match-info').classList.remove('visible');
