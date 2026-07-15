@@ -93,8 +93,7 @@
     .card-title span.step-tie { background: var(--tie); }
 
     /* ===== Login ===== */
-    #login-screen { display: block; }
-    #main-screen  { display: none; }
+    #main-screen  { display: block; }
 
     .form-group { margin-bottom: 16px; }
     .form-label { display: block; font-size: 0.84rem; font-weight: 700; color: var(--text); margin-bottom: 7px; }
@@ -321,28 +320,6 @@
 
   <main class="admin-main">
 
-    <!-- ===== ログイン画面 ===== -->
-    <div id="login-screen">
-      <div class="card">
-        <div class="card-title">
-          <span class="step">🔑</span>
-          ログイン
-        </div>
-        <div id="login-alert" class="alert alert-error">パスワードが正しくありません</div>
-        <div class="form-group">
-          <label class="form-label" for="password-input">パスワード</label>
-          <input type="password" id="password-input" class="form-input" placeholder="管理者パスワードを入力" autocomplete="current-password">
-        </div>
-        <button class="btn-primary" onclick="doLogin()">ログイン</button>
-      </div>
-
-      <div class="setup-notice">
-        <strong>⚙️ セットアップが必要な場合</strong>
-        GAS（Google Apps Script）をデプロイしてから、このファイル内の
-        <code>GAS_URL</code> にウェブアプリURLを、<code>ADMIN_PASSWORD</code> にパスワードを設定してください。
-      </div>
-    </div>
-
     <!-- ===== メイン画面 ===== -->
     <div id="main-screen">
 
@@ -501,12 +478,6 @@
 
       </div><!-- /#tie-section -->
 
-      <div style="text-align:center;margin-top:4px;">
-        <button onclick="doLogout()" style="background:none;border:none;color:var(--muted);font-size:0.82rem;cursor:pointer;font-family:inherit;padding:8px;">
-          ログアウト
-        </button>
-      </div>
-
     </div><!-- /#main-screen -->
   </main>
 
@@ -640,40 +611,9 @@
     var tieState        = { group: null, rank: null, team: null };
 
     /* ================================================================
-       ログイン
+       初期化(ログイン不要・開いたらすぐ入力可能)
     ================================================================ */
-    function doLogin() {
-      var pw = document.getElementById('password-input').value;
-      var al = document.getElementById('login-alert');
-      if (pw === ADMIN_PASSWORD) {
-        sessionStorage.setItem('vcup_admin', '1');
-        document.getElementById('login-screen').style.display = 'none';
-        document.getElementById('main-screen').style.display  = 'block';
-        al.classList.remove('visible');
-        buildMatchList();
-      } else {
-        al.classList.add('visible');
-        document.getElementById('password-input').value = '';
-        document.getElementById('password-input').focus();
-      }
-    }
-
-    function doLogout() {
-      sessionStorage.removeItem('vcup_admin');
-      document.getElementById('login-screen').style.display = 'block';
-      document.getElementById('main-screen').style.display  = 'none';
-      document.getElementById('password-input').value = '';
-    }
-
-    document.getElementById('password-input').addEventListener('keydown', function(e) {
-      if (e.key === 'Enter') doLogin();
-    });
-
-    if (sessionStorage.getItem('vcup_admin') === '1') {
-      document.getElementById('login-screen').style.display = 'none';
-      document.getElementById('main-screen').style.display  = 'block';
-      setTimeout(buildMatchList, 0);
-    }
+    setTimeout(buildMatchList, 0);
 
     /* ================================================================
        カテゴリ選択
